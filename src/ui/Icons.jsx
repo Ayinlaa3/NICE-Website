@@ -314,8 +314,8 @@ export const Secure = () => {
   return (
     <svg
       width="45"
-      height="48"
-      viewBox="0 0 45 48"
+      height="47"
+      viewBox="0 0 45 47"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
