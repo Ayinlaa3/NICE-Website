@@ -15,7 +15,7 @@ import YoungEngineersCorner from "../ui/landingpage/YoungEngineersCorner.jsx";
 
 const LandingPage = () => {
   return (
-    <main className="flex flex-col gap-y-10">
+    <main className="flex flex-col">
       <Navbar />
       <Banner />
       <WhoWeAre />
