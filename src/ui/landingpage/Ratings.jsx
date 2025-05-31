@@ -9,8 +9,8 @@ const Ratings = () => {
       </div>
       <Vr />
       <div>
-        <Rating number={7000} />
-        <span>Nice members</span>
+        <Rating number={6000} />
+        <span>Capacity Development Programs</span>
       </div>
       <Vr />
       <div>
