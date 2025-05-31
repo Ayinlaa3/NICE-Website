@@ -286,6 +286,7 @@ export const Certificate = () => {
   );
 };
 
+
 export const Partner = () => {
   return (
     <svg
