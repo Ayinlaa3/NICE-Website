@@ -3,6 +3,9 @@ import Button from "@/components/ui/Button";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
 import ExecutiveCard from "@/components/ExecutiveCard";
+import HeroBanner from "@/components/HeroBanner";
+import BreadcrumbNav from "@/components/BreadcrumbNav";
+import SectionTitle from "@/components/SectionTitle";
 
 import bgHero from "/images/leadership-hero.png";
 import chairmanImg from "/images/chairman2.png";
@@ -23,21 +26,21 @@ const LEADERS = [
   {
     title: "The National Chairman",
     description:
-      "The National Chairman serves as the chief executive officer and principal representative of NICE, providing strategic leadership and overseeing execution of its goals.",
+      "The National Chairman is the head of the Nigerian Institution of Civil Engineers (NICE) and serves as the chief executive officer and principal representative of the Institution. The Chairman provides strategic leadership, presides over meetings, and ensures the execution of NICE’s objectives, policies, and professional standards.",
     image: chairmanImg,
     link: "/leadership/chairman",
   },
   {
     title: "Board of Trustees",
     description:
-      "The Board of Trustees is the highest advisory and custodial body of NICE, guiding its vision and long-term objectives.",
+      "The Board of Trustees (BoT) is the highest advisory and custodial body of NICE, responsible for overseeing the long-term vision and stability of the Institution. The trustees act as guardians of NICE’s mission, ensuring that the Institution adheres to its founding principles and objectives.",
     image: trusteesImg,
     link: "/leadership/trustees",
   },
   {
     title: "The Council",
     description:
-      "The Council is the governing body that handles policymaking, administration, and institutional management of NICE.",
+      "The Council is the governing body responsible for policymaking, administration, and overall management of NICE. It consists of elected officers, committee representatives, and other key stakeholders who drive the Institution’s activities.",
     image: councilImg,
     link: "/leadership/council",
   },
@@ -61,24 +64,15 @@ const Leadership = () => {
     <main className="flex flex-col min-h-screen">
       <Navbar />
 
-      <section
-        className="relative bg-cover bg-center h-80 text-white"
-        style={{ backgroundImage: `url(${bgHero})` }}
-      >
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <h1 className="text-4xl font-bold">Leadership</h1>
-        </div>
-      </section>
+      <HeroBanner title="Leadership" bgImage={bgHero} />
 
-      <nav className="bg-gray-100 px-6 md:px-16 py-4 text-sm">
-        <ol className="flex items-center space-x-2 text-gray-700">
-          <li><a href="/" className="hover:underline">Home</a></li>
-          <li>&gt;</li>
-          <li><a href="/about" className="hover:underline">About Us</a></li>
-          <li>&gt;</li>
-          <li className="text-black font-semibold">Leadership</li>
-        </ol>
-      </nav>
+      <BreadcrumbNav
+        paths={[
+          { label: "Home", href: "/" },
+          { label: "About Us", href: "/about" },
+          { label: "Leadership" },
+        ]}
+      />
 
       <section className="py-16 px-6 md:px-16 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -99,9 +93,7 @@ const Leadership = () => {
       </section>
 
       <section className="py-16 px-6 md:px-16 bg-[var(--secondary)]">
-        <h2 className="text-2xl font-semibold mb-6 text-[var(--primary)] text-center">
-          2025 National Executives
-        </h2>
+        <SectionTitle>2025 National Executives</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {EXECUTIVES.map((exec, idx) => (
             <ExecutiveCard key={idx} {...exec} />
@@ -115,96 +107,3 @@ const Leadership = () => {
 };
 
 export default Leadership;
-
-
-
-
-
-// // src/pages/Leadership.jsx
-// import Button from "@/components/ui/Button";
-// import Navbar from "@/ui/landingpage/Navbar";
-// import Footer from "@/ui/landingpage/Footer";
-// import ExecutiveCard from "@/components/ExecutiveCard";
-// import leadershipImg from "/images/chairman.png";
-
-// const LEADERS = [
-//   {
-//     title: "The National Chairman",
-//     description:
-//       "The National Chairman is the head of the Nigerian Institution of Civil Engineers (NICE) and serves as the chief executive officer and principal representative of the Institution. The Chairman provides strategic leadership, presides over meetings, and ensures the execution of NICE’s objectives, policies, and professional standards.",
-//     image: leadershipImg,
-//   },
-//   {
-//     title: "Board of Trustees",
-//     description:
-//       "The Board of Trustees is the highest advisory and custodial body of NICE, guiding its vision and long-term objectives.",
-//     image: leadershipImg,
-//   },
-//   {
-//     title: "The Council",
-//     description:
-//       "The Council is the governing body that handles policymaking, administration, and institutional management of NICE.",
-//     image: leadershipImg,
-//   },
-// ];
-
-// const EXECUTIVES = [
-//   { name: "Engr. Tokunbo Ajanaku", title: "National Chairman", image: leadershipImg },
-//   { name: "Engr. Dr. V. C. Ezugu", title: "Immediate Past National Chairman", image: leadershipImg },
-//   { name: "Engr. Onuoha Obeka", title: "National Vice Chairman", image: leadershipImg },
-//   { name: "Engr. Dr. Grace M. Amusan", title: "National Vice Chairman", image: leadershipImg },
-//   { name: "Engr. Dr. Bukar Kadai", title: "National Vice Chairman", image: leadershipImg },
-//   { name: "Engr. Prof. Sony Emeka Ali", title: "Deputy National Chairman", image: leadershipImg },
-//   { name: "Engr. Etaghene Ogho", title: "South-East Chapters Coordinator", image: leadershipImg },
-//   { name: "Engr. M. B. Shettimah", title: "Southwest Chapters Coordinator", image: leadershipImg },
-//   { name: "Engr. Dr. Ifie-Emi F. Oseke", title: "Northwest Chapters Coordinator", image: leadershipImg },
-//   { name: "Engr. Boaz Toluwalope David", title: "South-South Chapters Coordinator", image: leadershipImg },
-//   { name: "Ex-Officio Members", title: "Multiple Executives", image: leadershipImg },
-// ];
-
-// const Leadership = () => {
-//   return (
-//     <main className="flex flex-col min-h-screen">
-//       <Navbar />
-
-//       <section className="relative bg-cover bg-center h-80 text-white" style={{ backgroundImage: "url('/images/chairman.png')" }}>
-//         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-//           <h1 className="text-4xl font-bold">Leadership</h1>
-//         </div>
-//       </section>
-
-//       <nav className="bg-gray-100 py-2 px-6 md:px-16 text-sm text-gray-600">
-//         Home &gt; About Us &gt; <span className="text-black font-semibold">Leadership</span>
-//       </nav>
-
-//       <section className="py-16 px-6 md:px-45 bg-white">
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-15">
-//           {LEADERS.map((lead, idx) => (
-//             <div key={idx} className="bg-[var(--primary)] rounded-xl overflow-hidden shadow">
-//               <img src={lead.image} alt={lead.title} className="w-full h-48 object-cover bg-white" />
-//               <div className="p-4">
-//                 <h2 className="text-xl font-bold text-[var(--accent)] mb-2">{lead.title}</h2>
-//                 <p className="text-[var(--accent)] text-sm leading-snug">{lead.description}</p>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       <section className="py-16 px-6 md:px-16 bg-[var(--secondary)]">
-//         <h2 className="text-2xl font-semibold mb-6 text-[var(--primary)] text-center">
-//           2025 National Executives
-//         </h2>
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-//           {EXECUTIVES.map((exec, idx) => (
-//             <ExecutiveCard key={idx} {...exec} />
-//           ))}
-//         </div>
-//       </section>
-
-//       <Footer />
-//     </main>
-//   );
-// };
-
-// export default Leadership;
