@@ -1,12 +1,92 @@
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { useEffect, useState } from "react";
+import { Popover } from "@headlessui/react";
 import Button from "@/components/ui/Button";
-import { ArrowDown } from "../Icons";
-import { Link } from "react-router-dom";
+import { ArrowDown } from "../Icons"; // Assuming this is your custom arrow icon
+import { Link } from "react-router-dom"; // Make sure react-router-dom is installed
+
+// Define the navigation items with their submenus
+const NAV_ITEMS = [
+  {
+    name: "Home",
+    href: "/",
+    type: "link", // Indicates a direct link, not a dropdown
+  },
+  {
+    name: "About Us",
+    type: "dropdown",
+    submenus: [
+      { name: "About NICE", href: "/about" },
+      { name: "The National Chairman", href: "/national-chairman" },
+      { name: "NICE Leadership", href: "/leadership" },
+      { name: "Chapters", href: "/chapters" },
+      { name: "Visit NSE Website", href: "https://nse.org.ng" },
+    ],
+  },
+  {
+    name: "Career & Development",
+    type: "dropdown",
+    submenus: [
+      { name: "Civil Engineering Jobs", href: "/jobs" },
+      { name: "Journals", href: "/journals" },
+      { name: "NICE Books", href: "/books" },
+      { name: "Webinars", href: "/webinars" },
+      { name: "Mentorship", href: "/mentorship" },
+      { name: "Learning Materials", href: "/learning-materials" },
+    ],
+  },
+  {
+    name: "Events",
+    type: "dropdown",
+    submenus: [
+      { name: "NICE Conference", href: "https://conference.nicehq.org" },
+      { name: "NSE Conference", href: "https://nse.org.ng/conference" },
+      { name: "COREN Convention", href: "/events/coren-convention" },
+      { name: "International Trips", href: "/events/international-trips" },
+      { name: "All Events", href: "/events" },
+    ],
+  },
+  {
+    name: "News & Blogs",
+    type: "dropdown",
+    submenus: [
+      { name: "Newsletters", href: "/news/newsletters" },
+      { name: "Blogs", href: "/news/blogs" },
+      { name: "NICE Updates", href: "/news/updates" },
+    ],
+  },
+  {
+    name: "More",
+    type: "dropdown",
+    submenus: [
+      { name: "Contact Support", href: "/contact" },
+      { name: "Find your Chapter", href: "/find-chapter" },
+      { name: "Make Payment", href: "/make-payment" },
+      { name: "Find a Member", href: "/find-member" },
+    ],
+  },
+];
 
 const Navbar = () => {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setShow(currentY < lastScrollY || currentY < 50);
+      setLastScrollY(currentY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="bg-(--accent) border-(--border) border-b-3">
-      <div className="h-4 bg-linear-90 from-[#FEF303] from-0% to-[#03823B] to-100%" />
+    <header
+      className={`sticky top-0 z-50 transition-transform duration-300 ${
+        show ? "translate-y-0" : "-translate-y-full"
+      } bg-(--accent) border-b-2 border-(--border)`}
+    >
+      <div className="h-4 bg-gradient-to-r from-[#FEF303] to-[#03823B]" />
       <div className="px-8 py-4 gap-2 flex justify-between items-center">
         <div className="flex items-center gap-4">
           <img
@@ -16,8 +96,7 @@ const Navbar = () => {
             className="size-33"
           />
           <h1 className="font-[Old_English_Text_MT_V2] text-(--primary) text-[40px] leading-[45px]">
-            Nigerian Institution <br />
-            of Civil Engineers
+            Nigerian Institution <br /> of Civil Engineers
           </h1>
         </div>
 
@@ -26,104 +105,78 @@ const Navbar = () => {
           <div className="flex gap-4 justify-between py-3 items-center">
             <input
               type="text"
-              className="w-[526px] rounded-[10px] outline-none border-(--input) border-2 py-2 px-6 text-xl placeholder:text-(--muted)"
+              className="w-[526px] rounded-[10px] outline-none border-(--input) border-2 py-2 px-6 text-xl placeholder:text-[--muted]"
               placeholder="Search"
             />
 
             <div className="flex gap-4 items-center">
-              <Link to="/login">
+              <Link to="https://portal.nicehq.org">
                 <Button variant="secondary">Login to your Portal</Button>
               </Link>
-              <Link to="/signup">
-              <Button>Join NICE</Button>
+              <Link to="https://portal.nicehq.org/register">
+                <Button>Join NICE</Button>
               </Link>
             </div>
           </div>
 
-          {/* row 2  */}
-          <div className="flex gap-6 tect-black py-3 justify-between items-center">
-            <a href="#" className="font-semibold text-xl hover:text-(--muted)">
-              Home
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-1 font-semibold text-xl hover:text-(--muted)"
-            >
-              About Us <ArrowDown />
-            </a>
+          {/* row 2 - Navigation Menu */}
+          <nav className="flex gap-6 text-black py-3 justify-between items-center">
+            {NAV_ITEMS.map((item) => (
+              <div key={item.name}>
+                {item.type === "link" ? (
+                  <Link
+                    to={item.href}
+                    className="font-semibold text-xl hover:text-[--muted]"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <Popover className="relative">
+                    {({ open }) => (
+                      <>
+                        <Popover.Button className="font-semibold text-black flex items-center gap-1 text-xl focus:outline-none hover:text-[--muted]">
+                          {item.name} <ArrowDown className={`${open ? 'rotate-180 transform' : ''} transition-transform duration-200`} />
+                        </Popover.Button>
 
-            <Popover>
-              <PopoverButton className="font-semibold text-black  flex items-center gap-1 text-xl">
-                Career & Development <ArrowDown />
-              </PopoverButton>
-              <PopoverPanel
-                transition
-                anchor="bottom"
-                className="divide-y divide-white/5 rounded-xl bg-black text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
-              >
-                <div className="p-3">
-                  <a
-                    className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
-                    href="#"
-                  >
-                    <p className="font-semibold text-white">Insights</p>
-                    <p className="text-white/50">
-                      Measure actions your users take
-                    </p>
-                  </a>
-                  <a
-                    className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
-                    href="#"
-                  >
-                    <p className="font-semibold text-white">Automations</p>
-                    <p className="text-white/50">
-                      Create your own targeted content
-                    </p>
-                  </a>
-                  <a
-                    className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
-                    href="#"
-                  >
-                    <p className="font-semibold text-white">Reports</p>
-                    <p className="text-white/50">Keep track of your growth</p>
-                  </a>
-                </div>
-                <div className="p-3">
-                  <a
-                    className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
-                    href="#"
-                  >
-                    <p className="font-semibold text-white">Documentation</p>
-                    <p className="text-white/50">
-                      Start integrating products and tools
-                    </p>
-                  </a>
-                </div>
-              </PopoverPanel>
-            </Popover>
-            <a
-              href="#"
-              className="font-semibold flex items-center gap-1 text-xl hover:text-[--link]"
-            >
-              Events <ArrowDown />
-            </a>
-            <a
-              href="#"
-              className="font-semibold flex items-center gap-1 text-xl hover:text-[--link]"
-            >
-              News & Blogs <ArrowDown />
-            </a>
-
-            <a
-              href="#"
-              className="font-semibold flex items-center gap-1 text-xl hover:text-[--link]"
-            >
-              More <ArrowDown />
-            </a>
-          </div>
+                        <Popover.Panel
+                          className="absolute z-10 mt-2 w-max max-w-sm px-4 sm:px-0 lg:max-w-md"
+                          // Add transition classes for smooth appearance/disappearance
+                          enter="transition ease-out duration-200"
+                          enterFrom="opacity-0 translate-y-1"
+                          enterTo="opacity-100 translate-y-0"
+                          leave="transition ease-in duration-150"
+                          leaveFrom="opacity-100 translate-y-0"
+                          leaveTo="opacity-0 translate-y-1"
+                        >
+                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="relative grid gap-2 bg-white p-4">
+                              {item.submenus.map((submenu) => (
+                                <Link
+                                  key={submenu.name}
+                                  to={submenu.href}
+                                  className="-m-2 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-opacity-50"
+                                >
+                                  <div className="ml-2">
+                                    <p className="text-base font-medium text-gray-900">
+                                      {submenu.name}
+                                    </p>
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </Popover.Panel>
+                      </>
+                    )}
+                  </Popover>
+                )}
+              </div>
+            ))}
+          </nav>
         </div>
       </div>
     </header>
   );
 };
+
 export default Navbar;

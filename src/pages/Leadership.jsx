@@ -47,16 +47,16 @@ const LEADERS = [
 ];
 
 const EXECUTIVES = [
-  { name: "Engr. Tokunbo Ajanaku", title: "National Chairman, FNSE, FNICE", image: exec1 },
-  { name: "Engr. Dr. V. C. Ezugu", title: "Immediate Past National Chairman, FNSE, FNICE", image: exec2 },
-  { name: "Engr. Onuoha Obeka", title: "National Vice Chairman, FNSE, FNICE, South East Chapters Coordinator", image: exec3 },
-  { name: "Engr. Dr. Grace M. Amusan", title: "National Vice Chairman, FNSE, FNICE", image: exec4 },
-  { name: "Engr. Dr. Bukar Kadai", title: "National Vice Chairman, FNSE, FNICE", image: exec5 },
-  { name: "Engr. Prof. Sony Emeka Ali", title: "Deputy National Chairman, FNSE, FNICE", image: exec6 },
-  { name: "Engr. Etaghene Ogho", title: "South-East Chapters Coordinator, FNSE, FNICE", image: exec7 },
-  { name: "Engr. M. B. Shettimah", title: "Southwest Chapters Coordinator, FNSE, FNICE", image: exec8 },
-  { name: "Engr. Dr. Ifie-Emi F. Oseke", title: "Northwest Chapters Coordinator, FNSE, FNICE", image: exec9 },
-  { name: "Engr. Boaz Toluwalope David", title: "South-South Chapters Coordinator, FNSE, FNICE", image: exec10 },
+  { name: "Engr. Dr. V. C. Ezugu, FNSE, FNICE", title: "Immediate Past National Chairman", image: exec1 },
+  { name: "Engr. Tokunbo Ajanaku, FNSE, FNICE", title: "National Chairman", image: exec2 },
+  { name: "Engr. Prof. Sony E. Ali, FNSE, FNICE", title: "Deputy National Chairman", image: exec3 },
+  { name: "Engr. Onuoha Obeka, FNSE, FNICE", title: "National Vice Chairman and South East Chapters Coordinator", image: exec4 },
+  { name: "Engr. Dr. G. M. Amusan, FNSE, FNICE", title: "National Vice Chairman and South-West Chapters Coordinator", image: exec5 },
+  { name: "Engr. Dr. Bukar Kadai, FNSE, FNICE", title: "National Vice Chairman and North-East Chapters Coordinator", image: exec6 },
+  { name: "Engr. Etaghene Ogho, FNSE, FNICE", title: "Ex-Officio and South-South Chapters Coordinator", image: exec7 },
+  { name: "Engr. M. B. Shettimah, FNSE, FNICE", title: "Ex-Officio and North-West Chapters Coordinator", image: exec8 },
+  { name: "Engr. Dr. Ifie-Emi Oseke, FNSE, FNICE", title: "Ex-Officio and North-Central Chapters Coordinator", image: exec9 },
+  { name: "Engr. Boaz T. David, FNSE, FNICE", title: "Executive Secretary", image: exec10 },
 ];
 
 const Leadership = () => {
@@ -82,10 +82,10 @@ const Leadership = () => {
               href={lead.link}
               className="bg-[var(--accent)] hover:shadow-lg transition rounded-xl overflow-hidden shadow block"
             >
-              <img src={lead.image} alt={lead.title} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h2 className="text-xl font-bold text-[var(--primary)] mb-2">{lead.title}</h2>
-                <p className="text-gray-700 text-sm leading-snug">{lead.description}</p>
+              <img src={lead.image} alt={lead.title} className="w-full h-68 object-cover" />
+              <div className="p-4 items-center">
+                <h2 className="text-xl font-bold text-[var(--primary)] mb-2 text-center">{lead.title}</h2>
+                <p className="text-gray-700 text-l leading-snug text-justify">{lead.description}</p>
               </div>
             </a>
           ))}

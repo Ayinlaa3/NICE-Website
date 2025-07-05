@@ -14,20 +14,20 @@ const newsItems = [
       "FG Allocates ₦89.2 Billion for Road and Infrastructure Development in FCT",
     category: "Infrastructure News",
     date: "30 January 2025",
-    image: "/images/news1.png",
+    image: "/images/news2.png",
   },
   {
     title: "How to kickstart your career in Sustainability-Tech",
     category: "Blog",
     date: "02 February 2025",
-    image: "/images/news1.png",
+    image: "/images/news3.png",
   },
   {
     title:
       "NICE OSUN CHAPTER paid Technical Visit to Redeemer University Ede, Osun State",
     category: "Chapters News",
     date: "11 February 2025",
-    image: "/images/news1.png",
+    image: "/images/news4.png",
   },
 ];
 
