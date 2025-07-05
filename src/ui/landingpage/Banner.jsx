@@ -10,6 +10,11 @@ const images = [
   "/images/slide3.png",
   "/images/slide4.png",
   "/images/slide5.png",
+  "/images/slide6.jpg",
+  "/images/slide7.jpg",
+  "/images/slide8.png",
+  "/images/slide9.jpg",
+  "/images/slide10.jpg",
 ];
 
 const Banner = () => {
@@ -36,7 +41,7 @@ const Banner = () => {
             <a href="#">
               <Plus /> Join NICE
             </a>
-            <a href="#">
+            <a href="https://portal.nicehq.org/register">
               <Search /> Find A Member
             </a>
             <a href="#">

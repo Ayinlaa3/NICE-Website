@@ -12,6 +12,7 @@ import Testimonial from "../ui/landingpage/Testimonials.jsx";
 import WhoWeAre from "../ui/landingpage/WhoWeAre.jsx";
 import Footer from "../ui/landingpage/Footer.jsx";
 import YoungEngineersCorner from "../ui/landingpage/YoungEngineersCorner.jsx";
+import PartnersGrid from "../ui/landingpage/PartnersGrid.jsx";
 
 const LandingPage = () => {
   return (
@@ -29,6 +30,7 @@ const LandingPage = () => {
       <Advertisment />
       <FeaturedSpotlights />
       <Testimonial />
+      <PartnersGrid />
       <Footer />
     </main>
   );

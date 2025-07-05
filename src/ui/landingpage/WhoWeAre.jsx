@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import { Link } from "react-router-dom";
 import {
   Facebook,
   Instagram,
@@ -34,13 +35,15 @@ const WhoWeAre = () => {
             the largest Division of the Nigerian Society of Engineers.
           </p>
 
-          <Button className="mb-10">About NICE</Button>
+          <Link to="/about">
+           <Button className="mb-10">About NICE</Button>
+           </Link>
 
           <div className="flex items-center gap-3">
             <img src="/icons/logo.svg" className="size-20" alt="NICE Logo" />{" "}
             <span className="text-(--primary) font-bold text-lg">NICE HQ</span>
             <div className="h-[73px] w-[2px] bg-(--muted)" />
-            <a href="#">
+            <a href="https://web.facebook.com/icenigerian/">
               <Facebook />
             </a>
             <a href="#">
@@ -49,10 +52,10 @@ const WhoWeAre = () => {
             <a href="#">
               <Instagram />
             </a>
-            <a href="#">
+            <a href="https://www.linkedin.com/company/nigerian-institution-of-civil-engineers-headquarters/">
               <Linkedin />
             </a>
-            <a href="#">
+            <a href="https://www.youtube.com/@NICE-HQ">
               <Youtube />
             </a>
           </div>
