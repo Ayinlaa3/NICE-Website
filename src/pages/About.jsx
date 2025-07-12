@@ -235,9 +235,9 @@ const About = () => {
           ))}
         </div>
         <div className="mt-10 text-center space-x-4">
-          <Button>Become a Member</Button>
-          <Button variant="secondary">Explore Trainings</Button>
-          <Button variant="tertiary">Partner with Us</Button>
+          <Button>Past National Chairmen</Button>
+          <Button variant="secondary">NICE MEMART</Button>
+          <Button variant="tertiary">NICE Chapters</Button>
         </div>
       </section>
 
