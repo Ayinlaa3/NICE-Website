@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-=======
 import React from 'react';
->>>>>>> dev
 import { Button } from "@headlessui/react";
 import TestimonialCard from "../../components/TestimonialCard";
 import { ArrowLeft, ArrowRight } from "../Icons";
 
-<<<<<<< HEAD
 const Testimonial = () => {
   // In a real carousel, you'd manage state for the current index
   const stories = [
@@ -142,13 +138,11 @@ const Testimonial = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-[#03823ac0] to-[#fef10367]" />
 
       {/* Content container */}
->>>>>>> dev
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 lg:px-8">
         <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
           Success Stories
         </h2>
         <div className="relative">
-<<<<<<< HEAD
           <div className="flex items-center justify-center gap-4 grow">
             <Button className="absolute left-0 top-1/2 transform -translate-y-1/2 hover:shadow-lg transition duration-300 ease-in-out rounded-full active:scale-90">
               <ArrowLeft />
@@ -163,7 +157,6 @@ const Testimonial = () => {
         </div>
       </div>
       <div className="bg-linear-90 to-[#fef10367] from-0% from-[#03823ac0] to-100% absolute inset-0" />
-=======
           <Slider {...settings}>
             {testimonials.map((story, index) => (
               <TestimonialCard key={index} {...story} />
@@ -171,13 +164,8 @@ const Testimonial = () => {
           </Slider>
         </div>
       </div>
->>>>>>> dev
     </div>
   );
 };
 
-<<<<<<< HEAD
 export default Testimonial;
-=======
-export default Testimonial;
->>>>>>> dev
