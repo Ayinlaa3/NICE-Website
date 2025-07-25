@@ -1,40 +1,12 @@
-import React from 'react';
-import { Button } from "@headlessui/react";
-import TestimonialCard from "../../components/TestimonialCard";
-import { ArrowLeft, ArrowRight } from "../Icons";
+// src/components/Testimonial.jsx
 
-const Testimonial = () => {
-  // In a real carousel, you'd manage state for the current index
-  const stories = [
-    {
-      name: "Engr. John Lark Doe, FNSE FNICE",
-      quote:
-        "Being a member of NICE has helped me improve on my professional skills and relevance in the built industry.",
-      imageSrc: "/images/Ellipse.png", // Replace with actual image path
-    },
-    {
-      name: "Engr. John Lark Doe, FNSE FNICE",
-      quote:
-        "Being a member of NICE has helped me improve on my professional skills and relevance in the built industry.",
-      imageSrc: "/images/Ellipse.png", // Replace with actual image path
-    },
-    {
-      name: "Engr. John Lark Doe, FNSE FNICE",
-      quote:
-        "Being a member of NICE has helped me improve on my professional skills and relevance in the built industry.",
-      imageSrc: "/images/Ellipse.png", // Replace with actual image path
-    },
-  ];
-
-  return (
-    <div className="bg-white py-12 relative bg-no-repeat bg-cover bg-center bg-[url('/images/testimonial-bg.png')]">
-=======
+import React from "react";
 import Slider from "react-slick";
+import { ArrowLeft, ArrowRight } from "../Icons";
+import TestimonialCard from "../../components/TestimonialCard";
+import Button from "@/components/ui/Button";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// You might also need to import a custom CSS file here if you don't use a global one
-// import './your-custom-slick-styles.css'; // Example if you create a new CSS file for this
-
 
 const testimonials = [
   {
@@ -75,94 +47,68 @@ const testimonials = [
   },
 ];
 
-const Testimonial = () => {
-  // Custom Next Arrow component
-  const NextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <Button
-        className={`${className} absolute right-0 top-1/2 transform -translate-y-1/2 hover:shadow-lg transition duration-300 ease-in-out rounded-full active:scale-90 z-20`}
-        onClick={onClick}
-        style={{ ...style, display: "block" }} // Ensure it's visible
-      >
-        <ArrowRight />
-      </Button>
-    );
-  };
-
-  // Custom Prev Arrow component
-  const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <Button
-        className={`${className} absolute left-0 top-1/2 transform -translate-y-1/2 hover:shadow-lg transition duration-300 ease-in-out rounded-full active:scale-90 z-20`}
-        onClick={onClick}
-        style={{ ...style, display: "block" }} // Ensure it's visible
-      >
-        <ArrowLeft />
-      </Button>
-    );
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    autoplay: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    // arrows: true, // This is the default, so you can omit it or explicitly set to true
-    nextArrow: <NextArrow />, // Assign custom next arrow
-    prevArrow: <PrevArrow />, // Assign custom prev arrow
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 1 },
-      },
-    ],
-  };
-
+// Custom Arrows
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
   return (
-    <div className="relative py-12">
-      {/* Background image container */}
-      <div
-        className="absolute inset-0 bg-no-repeat bg-cover bg-center bg-fixed opacity-30"
-        style={{ backgroundImage: "url('/images/testimonial-bg.jpg')" }}
-      ></div>
+    <Button
+      onClick={onClick}
+      className={`${className} absolute right-0 top-1/2 transform -translate-y-1/2 hover:shadow-lg rounded-full z-10`}
+      style={{ ...style, display: "block" }}
+    >
+      <ArrowRight />
+    </Button>
+  );
+};
 
-      {/* Background gradient overlay */}
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <Button
+      onClick={onClick}
+      className={`${className} absolute left-0 top-1/2 transform -translate-y-1/2 hover:shadow-lg rounded-full z-10`}
+      style={{ ...style, display: "block" }}
+    >
+      <ArrowLeft />
+    </Button>
+  );
+};
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  autoplay: true,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: { slidesToShow: 2 },
+    },
+    {
+      breakpoint: 768,
+      settings: { slidesToShow: 1 },
+    },
+  ],
+};
+
+const Testimonial = () => {
+  return (
+    <div className="relative py-16 bg-no-repeat bg-cover bg-center bg-[url('/images/testimonial-bg.jpg')]">
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#03823ac0] to-[#fef10367]" />
-
-      {/* Content container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-extrabold text-white text-center mb-8">
           Success Stories
         </h2>
-        <div className="relative">
-          <div className="flex items-center justify-center gap-4 grow">
-            <Button className="absolute left-0 top-1/2 transform -translate-y-1/2 hover:shadow-lg transition duration-300 ease-in-out rounded-full active:scale-90">
-              <ArrowLeft />
-            </Button>
-            {stories.map((story, index) => (
-              <TestimonialCard key={index} {...story} />
-            ))}
-            <Button className="absolute right-0 top-1/2 transform -translate-y-1/2 hover:shadow-lg transition duration-300 ease-in-out rounded-full active:scale-90">
-              <ArrowRight />
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div className="bg-linear-90 to-[#fef10367] from-0% from-[#03823ac0] to-100% absolute inset-0" />
-          <Slider {...settings}>
-            {testimonials.map((story, index) => (
-              <TestimonialCard key={index} {...story} />
-            ))}
-          </Slider>
-        </div>
+        <Slider {...settings}>
+          {testimonials.map((story, index) => (
+            <TestimonialCard key={index} {...story} />
+          ))}
+        </Slider>
       </div>
     </div>
   );
