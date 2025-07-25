@@ -6,20 +6,6 @@ const spotlightData = [
     title: "Iconic Infrastructure of the Year",
     category: "Spotlight",
     description:
-      "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet.",
-    image: "/images/news.png",
-  },
-  {
-    title: "Civil Engineer of the Month",
-    category: "Recognitions",
-    description:
-      "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet.",
-    image: "/images/news.png",
-  },
-  {
-    title: "Young Civil Engineer of the Month",
-    category: "Recognitions",
-    description:
       "Celebrating the most innovative and impactful infrastructure project that advanced engineering excellence and public good.",
     image: "/images/spotlight1.png",
   },
