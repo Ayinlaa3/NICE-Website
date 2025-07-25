@@ -7,8 +7,6 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
-<<<<<<< HEAD
-=======
 /* Hide the default content (the unicode characters like < >) of the slick arrows */
 .slick-prev:before,
 .slick-next:before {
@@ -21,7 +19,6 @@
   display: none !important;
 } */
 
->>>>>>> dev
 /* Import Tailwind CSS */
 @import "tailwindcss";
 

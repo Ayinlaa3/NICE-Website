@@ -6,11 +6,7 @@ import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
 import Button from "@/components/ui/Button";
-<<<<<<< HEAD
-import WhatWeDoCard from "@/components/WhatWeDoCard";
-=======
 import WhatWeDoCard from "@/components/WhatWeDoCard.jsx";
->>>>>>> dev
 import Slider from "react-slick";
 import { FaBullseye, FaEye, FaCheckCircle } from "react-icons/fa";
 
@@ -31,11 +27,7 @@ import youngEngineersImg from "/images/young-engineers.jpg";
 import jobsImg from "/images/jobs.png";
 import history1 from "/images/history-1.jpg";
 import history2 from "/images/history-2.png";
-<<<<<<< HEAD
-import history3 from "/images/history-3.jpg";
-=======
 import history3 from "/images/history-3.png";
->>>>>>> dev
 import logoBg from "/icons/logo.svg";
 
 const WHAT_WE_DO_CARDS = [
@@ -243,15 +235,9 @@ const About = () => {
           ))}
         </div>
         <div className="mt-10 text-center space-x-4">
-<<<<<<< HEAD
-          <Button>Become a Member</Button>
-          <Button variant="secondary">Explore Trainings</Button>
-          <Button variant="tertiary">Partner with Us</Button>
-=======
           <Button>Past National Chairmen</Button>
           <Button variant="secondary">NICE MEMART</Button>
           <Button variant="tertiary">NICE Chapters</Button>
->>>>>>> dev
         </div>
       </section>
 
