@@ -286,7 +286,10 @@ export const Certificate = () => {
   );
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 export const Partner = () => {
   return (
     <svg

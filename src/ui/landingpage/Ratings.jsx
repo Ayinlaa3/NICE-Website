@@ -5,7 +5,11 @@ const Ratings = () => {
     <div className="flex *:flex *:flex-col items-center justify-between py-10  gap-4  *:gap-2 *:items-center  container mx-auto px-40">
       <div>
         <Rating number={7000} />
+<<<<<<< HEAD
         <span>Registered members</span>
+=======
+        <span>Registered Civil Engineers</span>
+>>>>>>> dev
       </div>
       <Vr />
       <div>
@@ -32,7 +36,11 @@ const Rating = ({ number }) => {
     <CountUp
       className="text-4xl font-bold text-(--border)"
       end={number}
+<<<<<<< HEAD
       duration={2.2}
+=======
+      duration={5.2}
+>>>>>>> dev
       valueStart={0}
       enableScrollSpy={true}
       scrollSpyOnce={true}

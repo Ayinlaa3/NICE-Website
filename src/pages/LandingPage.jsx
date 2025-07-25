@@ -16,7 +16,11 @@ import PartnersGrid from "../ui/landingpage/PartnersGrid.jsx";
 
 const LandingPage = () => {
   return (
+<<<<<<< HEAD
     <main className="flex flex-col gap-y-10">
+=======
+    <main className="flex flex-col gap-y-">
+>>>>>>> dev
       <Navbar />
       <Banner />
       <WhoWeAre />

@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 
 const EVENTS = [
   {
+<<<<<<< HEAD
     image: "/images/card_img.png",
+=======
+    image: "/images/event1.jpg",
+>>>>>>> dev
     tag: "Outreach",
     title: "NICE SouthWest Regional Build-Right Workshop",
     location: "UI Conference Centre, Ibadan",
