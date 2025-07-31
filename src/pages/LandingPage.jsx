@@ -1,3 +1,5 @@
+// LandingPage.jsx
+
 import Advertisment from "../ui/landingpage/Advertisment.jsx";
 import Banner from "../ui/landingpage/Banner.jsx";
 import Events from "../ui/landingpage/Events.jsx";

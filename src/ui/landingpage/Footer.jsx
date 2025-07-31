@@ -1,3 +1,5 @@
+// Footer.jsx
+
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "../Icons";
 
 const Footer = () => {

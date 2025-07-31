@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 
 const EVENTS = [
   {
-
-    // image: "/images/card_img.png",
     image: "/images/event1.jpg",
     tag: "Training",
     title: "NICE SouthWest Regional Build-Right Workshop",

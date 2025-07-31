@@ -1,0 +1,34 @@
+[
+  {
+    "image": "/images/event1.jpg",
+    "tag": "Training",
+    "title": "NICE SouthWest Regional Build-Right Workshop",
+    "location": "UI Conference Centre, Ibadan",
+    "date": "15 March 2025",
+    "time": "10:00 AM - 2:00 PM WAT"
+  },
+  {
+    "image": "/images/event2.jpg",
+    "tag": "Technical Tour",
+    "title": "International Technical Tour to Denmark and Sweden",
+    "location": "Copenhagen and Malmö",
+    "date": "25 Aug 2025",
+    "time": "8:00 AM CET Daily"
+  },
+  {
+    "image": "/images/event3.png",
+    "tag": "Conference",
+    "title": "2025 International Conference and AGM",
+    "location": "Coronation Hall, Kano State",
+    "date": "21 - 23 Oct 2025",
+    "time": "9:00 AM WAT Daily"
+  },
+  {
+        "image": "/images/event4.png",
+        "tag": "Webinar",
+        "title": "Webinar on Sustainable Building Practices",
+        "location": "Online",
+        "date": "05 Nov 2025",
+        "time": "3:00 PM - 4:30 PM WAT"
+    }
+    ]   
