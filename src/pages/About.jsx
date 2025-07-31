@@ -184,9 +184,9 @@ const About = () => {
         <SectionTitle>Awards & Recognition</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-15 max-w-5xl mx-auto">
           {[
-            "NSE Group Dynamics Awards",
-            "Professional Development Awards",
-            "Professional Institution Awards",
+            "First Position in 2014 NSE Group Dynamics",
+            "First Position in 2015 NSE Group Dynamics",
+            "Second Position in 2016 NSE Group Dynamics",
           ].map((title, idx) => (
             <div
               key={idx}
