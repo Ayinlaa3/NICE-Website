@@ -1,27 +1,70 @@
 // src/pages/Publications.jsx
 
-import TabSwitcher from "../components/ui/TabSwitcher";
-import PublicationCard from "../components/ui/PublicationCard";
-import journals from "../data/journals.json";
-import newsletters from "../data/newsletters.json";
+import HeroBanner from "@/components/HeroBanner";
+import BreadcrumbNav from "@/components/BreadcrumbNav";
+import SectionTitle from "@/components/SectionTitle";
+import Navbar from "@/ui/landingpage/Navbar";
+import Footer from "@/ui/landingpage/Footer";
+import JournalCard from "@/components/ui/JournalCard";
+import { useState } from "react";
+
+import publicationsHero from "/images/publications-hero.jpg";
+import journalsData from "@/data/journals.json";
+import newslettersData from "@/data/newsletters.json";
 
 const Publications = () => {
+  const [activeTab, setActiveTab] = useState("journals");
+  const data = activeTab === "journals" ? journalsData : newslettersData;
+
   return (
-    <div className="px-4 py-10 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Publications</h1>
-      <TabSwitcher tabs={["Journals", "Newsletters"]}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {journals.map((item, index) => (
-            <PublicationCard key={index} {...item} />
+    <main className="flex flex-col min-h-screen">
+      <Navbar />
+
+      <HeroBanner title="Our Publications" bgImage={publicationsHero} />
+
+      <BreadcrumbNav
+        paths={[
+          { label: "Home", href: "/" },
+          { label: "Resources" },
+          { label: "Publications" },
+        ]}
+      />
+
+      <section className="px-6 md:px-16 py-16">
+        <SectionTitle>Journals & Newsletters</SectionTitle>
+
+        <div className="flex gap-4 justify-center mb-8">
+          <button
+            onClick={() => setActiveTab("journals")}
+            className={`px-6 py-2 rounded-full font-semibold transition ${
+              activeTab === "journals"
+                ? "bg-[var(--primary)] text-white"
+                : "bg-gray-200 text-gray-800"
+            }`}
+          >
+            Journals
+          </button>
+          <button
+            onClick={() => setActiveTab("newsletters")}
+            className={`px-6 py-2 rounded-full font-semibold transition ${
+              activeTab === "newsletters"
+                ? "bg-[var(--primary)] text-white"
+                : "bg-gray-200 text-gray-800"
+            }`}
+          >
+            Newsletters
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {data.map((item, idx) => (
+            <JournalCard key={idx} {...item} />
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {newsletters.map((item, index) => (
-            <PublicationCard key={index} {...item} />
-          ))}
-        </div>
-      </TabSwitcher>
-    </div>
+      </section>
+
+      <Footer />
+    </main>
   );
 };
 

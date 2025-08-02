@@ -2,6 +2,8 @@
 import TabSwitcher from "../components/ui/TabSwitcher";
 import EventCard from "../components/ui/EventCard";
 import eventsData from "../data/events.json";
+import Navbar from "@/ui/landingpage/Navbar";
+import Footer from "@/ui/landingpage/Footer";
 
 const getUniqueTags = (data) => {
   const tags = new Set(data.map((event) => event.tag));
