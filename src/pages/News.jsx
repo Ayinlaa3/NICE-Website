@@ -1,7 +1,7 @@
 // src/pages/News.jsx
 import TabSwitcher from "../components/ui/TabSwitcher";
 import NewsCard from "../components/ui/NewsCard";
-import newsData from "../../public/data/news.json";
+import newsData from "../public/data/news.json";
 
 const News = () => {
   const categories = ["Institutional News", "Infrastructure News", "Blog", "Chapters News"];

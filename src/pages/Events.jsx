@@ -1,7 +1,7 @@
 // src/pages/Events.jsx
 import TabSwitcher from "../components/ui/TabSwitcher";
 import EventCard from "../components/ui/EventCard";
-import eventsData from "../../public/data/events.json";
+import eventsData from "../public/data/events.json";
 
 const getUniqueTags = (data) => {
   const tags = new Set(data.map((event) => event.tag));

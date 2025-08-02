@@ -2,8 +2,8 @@
 
 import TabSwitcher from "../components/ui/TabSwitcher";
 import PublicationCard from "../components/ui/PublicationCard";
-import journals from "../../public/data/journals.json";
-import newsletters from "../../public/data/newsletters.json";
+import journals from "../public/data/journals.json";
+import newsletters from "../public/data/newsletters.json";
 
 const Publications = () => {
   return (
