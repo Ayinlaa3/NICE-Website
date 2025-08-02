@@ -1,36 +1,62 @@
 // src/pages/Events.jsx
-import TabSwitcher from "../components/ui/TabSwitcher";
-import EventCard from "../components/ui/EventCard";
-import eventsData from "../data/events.json";
+
+import HeroBanner from "@/components/HeroBanner";
+import BreadcrumbNav from "@/components/BreadcrumbNav";
+import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
+import EventCard from "@/components/ui/EventCard";
+import { useState } from "react";
 
-const getUniqueTags = (data) => {
-  const tags = new Set(data.map((event) => event.tag));
-  return ["All", ...Array.from(tags)];
-};
+import eventsHero from "/images/events-hero.jpg";
+import eventsData from "@/data/events.json";
 
 const Events = () => {
-  const categories = getUniqueTags(eventsData);
+  const [activeTab, setActiveTab] = useState("All");
+  const categories = ["All", ...new Set(eventsData.map((e) => e.tag))];
+  const filtered = activeTab === "All" ? eventsData : eventsData.filter(e => e.tag === activeTab);
 
   return (
-    <div className="px-4 py-10 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Events</h1>
-      <TabSwitcher tabs={categories}>
-        {categories.map((category) => (
-          <div
-            key={category}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
-          >
-            {eventsData
-              .filter((item) => category === "All" || item.tag === category)
-              .map((item, index) => (
-                <EventCard key={index} {...item} />
-              ))}
-          </div>
-        ))}
-      </TabSwitcher>
-    </div>
+    <main className="flex flex-col min-h-screen">
+      <Navbar />
+
+      <HeroBanner title="Events & Activities" bgImage={eventsHero} />
+
+      <BreadcrumbNav
+        paths={[
+          { label: "Home", href: "/" },
+          { label: "Events" },
+        ]}
+      />
+
+      <section className="px-6 md:px-16 py-16">
+        <SectionTitle>All Events</SectionTitle>
+
+        <div className="flex gap-4 justify-center mb-8 flex-wrap">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveTab(cat)}
+              className={`px-6 py-2 rounded-full font-semibold transition ${
+                activeTab === cat
+                  ? "bg-[var(--primary)] text-white"
+                  : "bg-gray-200 text-gray-800"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {filtered.map((item, idx) => (
+            <EventCard key={idx} {...item} />
+          ))}
+        </div>
+      </section>
+
+      <Footer />
+    </main>
   );
 };
 
