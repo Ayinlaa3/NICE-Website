@@ -58,7 +58,7 @@ const Publications = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {data.map((item, idx) => (
-            <JournalCard key={idx} {...item} />
+            <PublicationCard key={idx} {...item} />
           ))}
         </div>
       </section>
