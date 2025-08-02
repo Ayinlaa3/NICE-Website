@@ -8,7 +8,7 @@ import Footer from "@/ui/landingpage/Footer";
 import JournalCard from "@/components/ui/JournalCard";
 import { useState } from "react";
 
-import publicationsHero from "/images/publications-hero.jpg";
+import publicationsHero from "/images/publications-hero.png";
 import journalsData from "@/data/journals.json";
 import newslettersData from "@/data/newsletters.json";
 
