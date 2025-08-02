@@ -5,7 +5,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
-import PublicationCard from "@/components/PublicationCard";
+import PublicationCard from "@/components/ui/PublicationCard";
 import { useState } from "react";
 
 import publicationsHero from "/images/publications-hero.png";
