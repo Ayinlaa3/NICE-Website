@@ -2,6 +2,7 @@
 
 import Slider from "react-slick";
 import Button from "@/components/ui/Button";
+import { Link } from "react-router-dom";
 
 import { ArrowLeft, ArrowRight } from "../Icons";
 
@@ -118,9 +119,9 @@ const Journals = () => {
             </div>
           ))}
         </Slider>
-          <Link to="/publications">
-              <Button variant="tertiary">View all Publications</Button>
-           </Link>
+        <Link to="/publications">
+         <Button variant="tertiary">View all Publications</Button>
+        </Link>
       </article>
 
       <div className="absolute inset-0 bg-gradient-to-r from-[#03823a] to-[#fef103b2] opacity-80 z-0" />

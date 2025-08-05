@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import NewsCard from "../../components/NewsCard";
+import { Link } from "react-router-dom";
 
 const newsItems = [
   {
@@ -45,7 +46,9 @@ const NewsSection = () => {
         </div>
 
         <div className="mt-10 text-center">
-          <Button>See More News</Button>
+          <Link to="/news">
+           <Button>See More News</Button>
+           </Link>
         </div>
       </div>
     </section>
