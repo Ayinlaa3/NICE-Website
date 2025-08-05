@@ -118,8 +118,9 @@ const Journals = () => {
             </div>
           ))}
         </Slider>
-
-        <Button variant="tertiary">View all Publications</Button>
+          <Link to="/publications">
+              <Button variant="tertiary">View all Publications</Button>
+           </Link>
       </article>
 
       <div className="absolute inset-0 bg-gradient-to-r from-[#03823a] to-[#fef103b2] opacity-80 z-0" />
