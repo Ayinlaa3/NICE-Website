@@ -9,7 +9,7 @@ import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/ui/Reveal"; 
 import ChapterCard from "@/components/ChapterCard"; // ✅ We'll build this like ExecutiveCard
 
-import bgHero from "/images/chapters-hero.png"; // 🔄 Replace with actual hero image
+import bgHero from "/images/chapters-hero.jpg"; // 🔄 Replace with actual hero image
 
 // Example placeholder chapter data (will replace with spreadsheet later)
 const CHAPTERS = [
