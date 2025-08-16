@@ -67,13 +67,13 @@ const Banner = () => {
             href="#"
             className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
           >
-            <Plus className="w-5 h-5 text-yellow-500" /> Join NICE
+            <Plus className="w-5 h-5 fill-yellow-500" /> Join NICE
           </a>
           <a
             href="https://portal.nicehq.org/register"
             className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
           >
-            <Search className="w-5 h-5 text-red-500" /> Find A Member
+            <Search className="w-5 h-5 !fill-red-500" /> Find A Member
           </a>
           <a
             href="#"
