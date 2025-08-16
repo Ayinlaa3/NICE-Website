@@ -1,8 +1,8 @@
 // App.jsx
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Loader from "./components/ui/Loader.jsx";
-import ScrollToTop from "./components/ui/ScrollToTop.jsx"; // ✅ import
+import ScrollToTop from "./components/ui/ScrollToTop.jsx";
 
 // Lazy load pages
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -14,9 +14,9 @@ const Events = lazy(() => import("./pages/Events"));
 
 const App = () => {
   return (
-    <Router>
-      {/* ✅ Always listens for route changes */}
-      <ScrollToTop />  
+    <>
+      {/* ✅ Scroll reset works globally */}
+      <ScrollToTop />
 
       <Suspense fallback={<Loader />}>
         <Routes>
@@ -26,10 +26,9 @@ const App = () => {
           <Route path="/publications" element={<Publications />} />
           <Route path="/news" element={<News />} />
           <Route path="/events" element={<Events />} />
-          {/* Add more routes as needed */}
         </Routes>
       </Suspense>
-    </Router>
+    </>
   );
 };
 
