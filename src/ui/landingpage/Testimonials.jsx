@@ -10,37 +10,37 @@ import "slick-carousel/slick/slick-theme.css";
 
 const testimonials = [
   {
-    name: "Engr. Chinenye Okonkwo, FNSE",
+    name: "Engr. M. B. Shettimah, FNSE, FNICE",
     quote:
       "Joining NICE opened doors to endless professional growth and meaningful collaborations nationwide.",
     imageSrc: "/images/testimonial1.png",
   },
   {
-    name: "Engr. Musa Bello, MNICE",
+    name: "Ahmed Ayinla",
     quote:
-      "NICE empowered me with the technical knowledge and leadership skills needed to transform communities.",
+      "The mentorship I’ve received from NICE senior engineers shaped my career in the most impactful way.",
     imageSrc: "/images/testimonial2.png",
   },
   {
-    name: "Dr. Maryam Sani, FNSE",
+    name: "Engr. Dr. G. M. Amusan, FNICE",
     quote:
-      "The mentorship I’ve received from NICE senior engineers shaped my career in the most impactful way.",
+      "NICE empowered me with the technical knowledge and leadership skills needed to transform communities.",
     imageSrc: "/images/testimonial3.png",
   },
   {
-    name: "Engr. Tunde Alabi, MNSE",
+    name: "Engr. David Boaz, FNSE, FNICE",
     quote:
       "Through NICE conferences, I’ve connected with world-class engineers solving real infrastructure challenges.",
     imageSrc: "/images/testimonial4.png",
   },
   {
-    name: "Engr. Adaeze Nwachukwu, MNICE",
+    name: "Engr. Beedee Bott, FNSE, FNICE",
     quote:
       "NICE gave me a platform to speak, learn, and lead change in the civil engineering profession.",
     imageSrc: "/images/testimonial5.jpg",
   },
   {
-    name: "Engr. Peter Ojo, FNICE",
+    name: "Engr. Dr. Lola Adetona, FNSE, FNICE",
     quote:
       "The technical workshops and CPD programs from NICE helped me stay relevant in a fast-changing industry.",
     imageSrc: "/images/testimonial6.png",

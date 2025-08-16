@@ -2,31 +2,46 @@ import CountUp from "react-countup";
 
 const Ratings = () => {
   return (
-    <div className="flex *:flex *:flex-col items-center justify-between py-10  gap-4  *:gap-2 *:items-center  container mx-auto px-40">
-      <div>
+    <div className="flex flex-col md:flex-row items-center justify-between py-10 gap-8 md:gap-4 container mx-auto px-6 md:px-20 lg:px-40">
+      
+      <div className="flex flex-col items-center md:items-start text-center md:text-left">
         <Rating number={7000} />
         <span>Registered Civil Engineers</span>
       </div>
-      <Vr />
-      <div>
+
+      {/* Divider - hidden on mobile */}
+      <div className="hidden md:block">
+        <Vr />
+      </div>
+
+      <div className="flex flex-col items-center md:items-start text-center md:text-left">
         <Rating number={6000} />
         <span>Capacity Development Programs</span>
       </div>
-      <Vr />
-      <div>
+
+      <div className="hidden md:block">
+        <Vr />
+      </div>
+
+      <div className="flex flex-col items-center md:items-start text-center md:text-left">
         <Rating number={500} />
         <span>Research Publications</span>
       </div>
-      <Vr />
 
-      <div>
+      <div className="hidden md:block">
+        <Vr />
+      </div>
+
+      <div className="flex flex-col items-center md:items-start text-center md:text-left">
         <span className="text-4xl font-bold text-(--border)">2001</span>
         <span>Year Established</span>
       </div>
     </div>
   );
 };
+
 export default Ratings;
+
 const Rating = ({ number }) => {
   return (
     <CountUp

@@ -32,18 +32,25 @@ const EVENTS = [
 
 const Events = () => {
   return (
-    <div className="bg-(--accent) flex flex-col items-center gap-10 p-40 py-20">
-      <h2 className="font-extrabold text-4xl">Upcoming Events</h2>
+    <div className="bg-(--accent) flex flex-col items-center gap-10 px-6 md:px-20 lg:px-40 py-16 md:py-20">
+      {/* Section Title */}
+      <h2 className="font-extrabold text-2xl md:text-3xl lg:text-4xl text-center">
+        Upcoming Events
+      </h2>
 
-      <div className="grid mx-auto container grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {/* Event Cards Grid */}
+      <div className="grid w-full max-w-7xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {EVENTS.map((event, idx) => (
           <EventCard key={idx} {...event} />
         ))}
       </div>
 
+      {/* CTA Button */}
       <Link to="/events">
-           <Button>View all Events</Button>
-           </Link>
+        <Button size="lg" className="mt-4">
+          View all Events
+        </Button>
+      </Link>
     </div>
   );
 };

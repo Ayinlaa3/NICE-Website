@@ -51,45 +51,49 @@ const QuickLinks = () => {
           Quick Links
         </h2>
 
-        <div className="-mb-60 relative z-10">
-          <div className="bg-white rounded-t-4xl shadow-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-hidden">
-          {QUICK_LINKS.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.link}
-              className={`flex gap-4 items-start p-6 hover:bg-gray-50 transition duration-200 group ${
-                (idx + 1) % 3 !== 0 ? "border-r" : ""
-              } border-b border-gray-200`}
-            >
-              <div className="bg-[var(--secondary)] p-2 rounded-full text-[var(--primary)] text-5xl transition-transform duration-300 group-hover:scale-110">
-                <Icon icon={link.icon} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-xl text-[var(--primary)]">
-                  {link.title}
-                </h3>
-                <p className="text-m text-gray-700">{link.description}</p>
-              </div>
-            </a>
-          ))}
+        <div className="relative z-10 mb-10 lg:-mb-60">
+  <div className="bg-white rounded-t-4xl shadow-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 overflow-hidden">
+    {QUICK_LINKS.map((link, idx) => (
+      <a
+        key={idx}
+        href={link.link}
+        className={`flex gap-4 items-start p-6 hover:bg-gray-50 transition duration-200 group ${
+          (idx + 1) % 3 !== 0 ? "border-r" : ""
+        } border-b border-gray-200`}
+      >
+        <div className="bg-[var(--secondary)] p-2 rounded-full text-[var(--primary)] text-5xl transition-transform duration-300 group-hover:scale-110">
+          <Icon icon={link.icon} />
         </div>
+        <div>
+          <h3 className="font-semibold text-xl text-[var(--primary)]">
+            {link.title}
+          </h3>
+          <p className="text-m text-gray-700">{link.description}</p>
+        </div>
+      </a>
+    ))}
+  </div>
 
-        <div className="bg-green-900 text-white p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center rounded-b-4xl gap-4">
-          <div className="flex items-start gap-4 flex-1">
-            <Icon icon="fa-solid:hands-helping" className="text-white text-5xl transition-transform duration-300 hover:scale-110" />
-            <div className="gap-1 mx-auto">
-              <p className="font-semibold text-xl">
-                Your contribution fuels education, innovation, and development
-              </p>
-              <p className="">
-                Donate towards scholarships, research, and capacity-building initiatives that shape 
-                the future of civil engineering in Nigeria.
-              </p>
-            </div>
-          </div>
-          <Button variant="tertiary">Donate Now</Button>
-        </div>
-        </div>
+  <div className="bg-green-900 text-white p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center rounded-b-4xl gap-4">
+    <div className="flex items-start gap-4 flex-1">
+      <Icon
+        icon="fa-solid:hands-helping"
+        className="text-white text-5xl transition-transform duration-300 hover:scale-110"
+      />
+      <div className="gap-1 mx-auto">
+        <p className="font-semibold text-xl">
+          Your contribution fuels education, innovation, and development
+        </p>
+        <p>
+          Donate towards scholarships, research, and capacity-building initiatives that shape 
+          the future of civil engineering in Nigeria.
+        </p>
+      </div>
+    </div>
+    <Button variant="tertiary">Donate Now</Button>
+  </div>
+</div>
+
       </div>
     </section>
   );

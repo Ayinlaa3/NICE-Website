@@ -1,6 +1,5 @@
 // src/ui/landingpage/Banner.jsx
 // src/ui/landingpage/Banner.jsx
-
 import { Certificate, Partner, Plus, Search, Secure } from "../Icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -22,21 +21,34 @@ const images = [
   "/images/slide10.jpg",
 ];
 
-// Words to type in sequence
 const words = ["Planning", "Designing", "Constructing", "Maintaining", "Sustaining"];
 
 const Banner = () => {
-  const [index, setIndex] = useState(0);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
 
+  // Typing effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2500); // change every 2.5s
-    return () => clearInterval(interval);
-  }, []);
+    let currentWord = words[currentWordIndex];
+    let i = 0;
+    setDisplayedText("");
+
+    const typingInterval = setInterval(() => {
+      setDisplayedText(currentWord.slice(0, i + 1));
+      i++;
+      if (i === currentWord.length) {
+        clearInterval(typingInterval);
+        setTimeout(() => {
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        }, 1500);
+      }
+    }, 120);
+
+    return () => clearInterval(typingInterval);
+  }, [currentWordIndex]);
 
   return (
-    <div className="relative w-full h-[90vh] overflow-hidden">
+    <div className="relative w-full h-[85vh] sm:h-[90vh] overflow-hidden">
       {/* Background Slider */}
       <Swiper
         modules={[Autoplay]}
@@ -52,76 +64,82 @@ const Banner = () => {
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              {/* Dark Overlay */}
               <div className="absolute inset-0 bg-black/50" />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      {/* Centered Content Overlay */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 md:px-20 text-white z-20">
-        {/* Heading with typing effect */}
-        <motion.h2
-          key={index} // re-animates when word changes
+      {/* Overlay Content */}
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-10 md:px-20 text-white z-20">
+        
+        {/* Title with typing effect */}
+        <h2 className="font-extrabold text-2xl sm:text-4xl md:text-6xl leading-snug drop-shadow-lg">
+          <span className="text-green-400">{displayedText}</span> the World&apos;s <br className="hidden sm:block" /> Infrastructure
+        </h2>
+
+        {/* Subtitle */}
+        <motion.p
+          className="mt-3 sm:mt-5 text-sm sm:text-lg md:text-2xl font-medium max-w-lg sm:max-w-2xl md:max-w-3xl drop-shadow-md"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="font-extrabold text-4xl md:text-6xl leading-snug drop-shadow-lg"
+          transition={{ duration: 1, delay: 0.5 }}
         >
-          {words[index]} the World&apos;s <br /> Infrastructure
-        </motion.h2>
-
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="mt-5 text-lg md:text-2xl font-medium max-w-3xl drop-shadow-md"
-        >
-          The Nigerian Institution of Civil Engineers empowers civil engineers
-          with the knowledge, tools, and network to build resilient communities
-          and drive innovation.
+          The Nigerian Institution of Civil Engineers empowers civil engineers with the
+          knowledge, tools, and network to build resilient communities and drive innovation.
         </motion.p>
 
         {/* Quick Links */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="mt-5 text-lg md:text-xl rounded-2xl font-bold flex flex-wrap justify-center gap-5 px-6 py-2 border border-green-600 bg-white/95 backdrop-blur-md shadow-lg transition"
-          id="quickLinks"
+          className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg font-bold flex flex-wrap justify-center gap-3 sm:gap-5 px-4 py-3 border border-green-600 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { staggerChildren: 0.2, delayChildren: 1 },
+            },
+          }}
         >
-          <a
-            href="#"
-            className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
-          >
-            <Plus className="w-8 h-8" /> Join NICE
-          </a>
-          <a
-            href="https://portal.nicehq.org/register"
-            className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
-          >
-            <Search className="w-8 h-8" /> Find A Member
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
-          >
-            <Certificate className="w-8 h-8" /> Browse Courses
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
-          >
-            <Partner className="w-8 h-8" /> Donate Now
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
-          >
-            <Secure className="w-8 h-8" /> Make Payment
-          </a>
+          {/* Desktop View: All 5 buttons */}
+          <div className="hidden md:flex flex-wrap justify-center gap-4">
+            {[
+              { icon: Plus, text: "Join NICE" },
+              { icon: Search, text: "Find A Member", link: "https://portal.nicehq.org/register" },
+              { icon: Certificate, text: "Browse Courses" },
+              { icon: Partner, text: "Donate Now" },
+              { icon: Secure, text: "Make Payment" },
+            ].map(({ icon: Icon, text, link = "#" }, idx) => (
+              <motion.a
+                key={idx}
+                href={link}
+                className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                <Icon className="w-6 h-6 md:w-8 md:h-8" /> {text}
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Mobile View: Only 3 buttons inline */}
+          <div className="flex md:hidden w-full justify-center gap-2">
+            {[
+              { icon: Plus, text: "Join NICE" },
+              { icon: Search, text: "Find A Member", link: "https://portal.nicehq.org/register" },
+              { icon: Secure, text: "Make Payment" },
+            ].map(({ icon: Icon, text, link = "#" }, idx) => (
+              <motion.a
+                key={idx}
+                href={link}
+                className="flex items-center justify-center gap-1 text-green-700 hover:text-white hover:bg-green-600 px-2 py-1.5 rounded-lg text-xs sm:text-sm flex-1"
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" /> {text}
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
       </div>
     </div>
@@ -129,6 +147,7 @@ const Banner = () => {
 };
 
 export default Banner;
+
 
 
 
