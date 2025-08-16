@@ -1,11 +1,8 @@
 // App.jsx
-
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import Loader from "./components/ui/Loader";
-
-import TestLoader from "./components/ui/Loader";
-console.log("Loader component:", TestLoader);
+import Loader from "./components/ui/Loader.jsx";
+import ScrollToTop from "./components/ui/ScrollToTop.jsx"; // ✅ import
 
 // Lazy load pages
 const LandingPage = lazy(() => import("./pages/LandingPage"));
@@ -17,17 +14,22 @@ const Events = lazy(() => import("./pages/Events"));
 
 const App = () => {
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/leadership" element={<Leadership />} />
-        <Route path="/publications" element={<Publications />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/events" element={<Events />} />
-        {/* Add more routes as needed */}
-      </Routes>
-    </Suspense>
+    <Router>
+      {/* ✅ Always listens for route changes */}
+      <ScrollToTop />  
+
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/leadership" element={<Leadership />} />
+          <Route path="/publications" element={<Publications />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/events" element={<Events />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </Suspense>
+    </Router>
   );
 };
 

@@ -7,6 +7,7 @@ import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
 import Loader from "@/components/ui/Loader";
+import Reveal from "@/components/ui/Reveal"; // 🌟 Add Reveal
 
 import eventsHero from "/images/events-hero.jpg";
 import eventsData from "@/data/events.json";
@@ -35,34 +36,36 @@ const Events = () => {
         ]}
       />
 
-      <section className="px-6 md:px-16 py-16">
-        <SectionTitle>All Events</SectionTitle>
+      <Reveal>
+        <section className="px-6 md:px-16 py-16">
+          <SectionTitle>All Events</SectionTitle>
 
-        <div className="flex gap-4 justify-center mb-8 flex-wrap">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`px-6 py-2 rounded-full font-semibold transition ${
-                activeTab === cat
-                  ? "bg-[var(--primary)] text-white"
-                  : "bg-gray-200 text-gray-800"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Lazy load Event Cards */}
-        <Suspense fallback={<Loader />}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-            {filtered.map((item, idx) => (
-              <EventCard key={idx} {...item} />
+          <div className="flex gap-4 justify-center mb-8 flex-wrap">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                className={`px-6 py-2 rounded-full font-semibold transition ${
+                  activeTab === cat
+                    ? "bg-[var(--primary)] text-white"
+                    : "bg-gray-200 text-gray-800"
+                }`}
+              >
+                {cat}
+              </button>
             ))}
           </div>
-        </Suspense>
-      </section>
+
+          {/* Lazy load Event Cards */}
+          <Suspense fallback={<Loader />}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              {filtered.map((item, idx) => (
+                <EventCard key={idx} {...item} />
+              ))}
+            </div>
+          </Suspense>
+        </section>
+      </Reveal>
 
       <Footer />
     </main>

@@ -8,6 +8,7 @@ import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
 import Loader from "@/components/ui/Loader";
+import Reveal from "../components/ui/Reveal";
 
 import newsHero from "/images/news-hero.jpg";
 import newsData from "@/data/news.json";
@@ -38,6 +39,7 @@ const News = () => {
       <section className="px-6 md:px-16 py-16">
         <SectionTitle>Latest Updates</SectionTitle>
 
+          <Reveal delay={0.3} direction="up">
         {/* Category Tabs */}
         <div className="flex gap-4 justify-center mb-8 flex-wrap">
           {categories.map((cat) => (
@@ -46,14 +48,15 @@ const News = () => {
               onClick={() => setActiveTab(cat)}
               className={`px-6 py-2 rounded-full font-semibold transition ${
                 activeTab === cat
-                  ? "bg-[var(--primary)] text-white"
-                  : "bg-gray-200 text-gray-800"
+                ? "bg-[var(--primary)] text-white"
+                : "bg-gray-200 text-gray-800"
               }`}
             >
               {cat}
             </button>
           ))}
         </div>
+          </Reveal>
 
         {/* Lazy-loaded grid */}
         <Suspense fallback={<Loader />}>

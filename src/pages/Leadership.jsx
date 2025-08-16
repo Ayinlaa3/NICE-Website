@@ -6,6 +6,7 @@ import ExecutiveCard from "@/components/ExecutiveCard";
 import HeroBanner from "@/components/HeroBanner";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import SectionTitle from "@/components/SectionTitle";
+import Reveal from "@/components/ui/Reveal"; // ✅ Import Reveal
 
 import bgHero from "/images/leadership-hero.png";
 import chairmanImg from "/images/chairman2.png";
@@ -74,31 +75,37 @@ const Leadership = () => {
         ]}
       />
 
+      {/* Leaders Section */}
       <section className="py-16 px-6 md:px-16 bg-white">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {LEADERS.map((lead, idx) => (
-            <a
-              key={idx}
-              href={lead.link}
-              className="bg-[var(--accent)] hover:shadow-lg transition rounded-xl overflow-hidden shadow block"
-            >
-              <img src={lead.image} alt={lead.title} className="w-full h-68 object-cover" />
-              <div className="p-4 items-center">
-                <h2 className="text-xl font-bold text-[var(--primary)] mb-2 text-center">{lead.title}</h2>
-                <p className="text-gray-700 text-l leading-snug text-justify">{lead.description}</p>
-              </div>
-            </a>
-          ))}
-        </div>
+        <Reveal direction="up">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {LEADERS.map((lead, idx) => (
+              <a
+                key={idx}
+                href={lead.link}
+                className="bg-[var(--accent)] hover:shadow-lg transition rounded-xl overflow-hidden shadow block"
+              >
+                <img src={lead.image} alt={lead.title} className="w-full h-68 object-cover" />
+                <div className="p-4 items-center">
+                  <h2 className="text-xl font-bold text-[var(--primary)] mb-2 text-center">{lead.title}</h2>
+                  <p className="text-gray-700 text-l leading-snug text-justify">{lead.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
+      {/* Executives Section */}
       <section className="py-16 px-6 md:px-16 bg-[var(--secondary)]">
         <SectionTitle>2025 National Executives</SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {EXECUTIVES.map((exec, idx) => (
-            <ExecutiveCard key={idx} {...exec} />
-          ))}
-        </div>
+        <Reveal direction="up" delay={0.3}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {EXECUTIVES.map((exec, idx) => (
+              <ExecutiveCard key={idx} {...exec} />
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       <Footer />

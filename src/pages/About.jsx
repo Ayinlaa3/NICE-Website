@@ -10,6 +10,7 @@ import Button from "@/components/ui/Button";
 import WhatWeDoCard from "@/components/WhatWeDoCard.jsx";
 import Loader from "@/components/ui/Loader";
 import { FaBullseye, FaEye, FaCheckCircle } from "react-icons/fa";
+import Reveal from "@/components/ui/Reveal"; // 🌟 Add Reveal
 
 // Lazy load Slider 🎯
 const Slider = lazy(() => import("react-slick"));
@@ -27,9 +28,6 @@ import publicationsImg from "/images/publications.png";
 import advocacyImg from "/images/advocacy.png";
 import youngEngineersImg from "/images/young-engineers.jpg";
 import jobsImg from "/images/jobs.png";
-import history1 from "/images/history-1.jpg";
-import history2 from "/images/history-2.png";
-import history3 from "/images/history-3.png";
 import logoBg from "/icons/logo.svg";
 
 const WHAT_WE_DO_CARDS = [
@@ -61,7 +59,7 @@ const WHAT_WE_DO_CARDS = [
     image: partnershipsImg,
     title: "Partnerships & Industry Collaboration",
     description:
-      "NICE actively engages withgovernment agencies, academic institutions, and corporate organizations to foster innovation, research, and policy reforms that enhance Nigeria’s infrastructure landscape.",
+      "NICE actively engages with government agencies, academic institutions, and corporate organizations to foster innovation, research, and policy reforms that enhance Nigeria’s infrastructure landscape.",
     ctaText: "Partner With Us",
     link: "/partnerships",
   },
@@ -146,69 +144,75 @@ const About = () => {
         ]}
       />
 
-      <section className="relative px-6 md:px-16 py-16 bg-white text-gray-700">
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: `url(${logoBg})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "60%",
-            backgroundAttachment: "fixed",
-          }}
-        ></div>
-        <SectionTitle className="text-green-600">
-          Building the World's Infrastructure
-        </SectionTitle>
-        <h3 className="relative font-bold text-xl max-w-4xl mx-auto text-center leading-8 z-10">
-          "The Nigerian Institution of Civil Engineers (NICE) is the premier
-          professional body dedicated to advancing the practice, education, and
-          impact of civil engineering in Nigeria."
-        </h3>
-      </section>
+      <Reveal>
+        <section className="relative px-6 md:px-16 py-16 bg-white text-gray-700">
+          <div
+            className="absolute inset-0 opacity-10 pointer-events-none"
+            style={{
+              backgroundImage: `url(${logoBg})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "60%",
+              backgroundAttachment: "fixed",
+            }}
+          ></div>
+          <SectionTitle className="text-green-600">
+            Building the World's Infrastructure
+          </SectionTitle>
+          <h3 className="relative font-bold text-xl max-w-4xl mx-auto text-center leading-8 z-10">
+            "The Nigerian Institution of Civil Engineers (NICE) is the premier
+            professional body dedicated to advancing the practice, education, and
+            impact of civil engineering in Nigeria."
+          </h3>
+        </section>
+      </Reveal>
 
-      <section className="px-6 md:px-16 py-16 bg-[var(--secondary)]">
-        <SectionTitle>Mission, Vision & Core Values</SectionTitle>
-        <div className="max-w-5xl mx-auto">
-          <Suspense fallback={<Loader />}>
-            <Slider {...sliderSettings}>
-              {missionVisionSlides.map((slide, idx) => (
-                <div key={idx} className="p-4">
-                  <div className="bg-white rounded-xl shadow p-6 flex items-start gap-4 max-w-3xl mx-auto">
-                    {slide.icon}
-                    <div>
-                      <h4 className="text-[var(--primary)] font-bold text-3xl mb-1">
-                        {slide.title}
-                      </h4>
-                      <p className="text-gray-700 leading-relaxed text-2xl">
-                        {slide.description}
-                      </p>
+      <Reveal delay={0.2}>
+        <section className="px-6 md:px-16 py-16 bg-[var(--secondary)]">
+          <SectionTitle>Mission, Vision & Core Values</SectionTitle>
+          <div className="max-w-5xl mx-auto">
+            <Suspense fallback={<Loader />}>
+              <Slider {...sliderSettings}>
+                {missionVisionSlides.map((slide, idx) => (
+                  <div key={idx} className="p-4">
+                    <div className="bg-white rounded-xl shadow p-6 flex items-start gap-4 max-w-3xl mx-auto">
+                      {slide.icon}
+                      <div>
+                        <h4 className="text-[var(--primary)] font-bold text-3xl mb-1">
+                          {slide.title}
+                        </h4>
+                        <p className="text-gray-700 leading-relaxed text-2xl">
+                          {slide.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </Slider>
-          </Suspense>
-        </div>
-      </section>
+                ))}
+              </Slider>
+            </Suspense>
+          </div>
+        </section>
+      </Reveal>
 
-      <section className="px-6 md:px-16 py-16 bg-white">
-        <SectionTitle>What We Do</SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {WHAT_WE_DO_CARDS.map((item, idx) => (
-            <WhatWeDoCard
-              key={idx}
-              {...item}
-              className="transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
-            />
-          ))}
-        </div>
-        <div className="mt-10 text-center space-x-4">
-          <Button>Past National Chairmen</Button>
-          <Button variant="secondary">NICE MEMART</Button>
-          <Button variant="tertiary">NICE Chapters</Button>
-        </div>
-      </section>
+      <Reveal delay={0.4}>
+        <section className="px-6 md:px-16 py-16 bg-white">
+          <SectionTitle>What We Do</SectionTitle>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {WHAT_WE_DO_CARDS.map((item, idx) => (
+              <WhatWeDoCard
+                key={idx}
+                {...item}
+                className="transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+              />
+            ))}
+          </div>
+          <div className="mt-10 text-center space-x-4">
+            <Button>Past National Chairmen</Button>
+            <Button variant="secondary">NICE MEMART</Button>
+            <Button variant="tertiary">NICE Chapters</Button>
+          </div>
+        </section>
+      </Reveal>
 
       <Footer />
     </main>
