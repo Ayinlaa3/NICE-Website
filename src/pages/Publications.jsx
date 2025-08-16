@@ -1,5 +1,6 @@
 // src/pages/Publications.jsx
 
+import React from "react";
 import { useState, Suspense } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
