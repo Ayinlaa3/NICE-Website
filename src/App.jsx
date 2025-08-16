@@ -11,6 +11,7 @@ const Leadership = lazy(() => import("./pages/Leadership"));
 const Publications = lazy(() => import("./pages/Publications"));
 const News = lazy(() => import("./pages/News"));
 const Events = lazy(() => import("./pages/Events"));
+const Chapters = lazy(() => import("./pages/Chapters"));
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
           <Route path="/publications" element={<Publications />} />
           <Route path="/news" element={<News />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/chapters" element={<Chapters />} />
+          {/* Add more routes as needed */}
         </Routes>
       </Suspense>
     </>
