@@ -1,16 +1,19 @@
 // src/pages/Publications.jsx
 
+import { useState, Suspense } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
-import PublicationCard from "@/components/ui/PublicationCard";
-import { useState } from "react";
+import Loader from "@/components/ui/Loader";
 
 import publicationsHero from "/images/publications-hero.png";
 import journalsData from "@/data/journals.json";
 import newslettersData from "@/data/newsletters.json";
+
+// Lazy load the card component
+const PublicationCard = React.lazy(() => import("@/components/ui/PublicationCard"));
 
 const Publications = () => {
   const [activeTab, setActiveTab] = useState("journals");
@@ -33,6 +36,7 @@ const Publications = () => {
       <section className="px-6 md:px-16 py-16">
         <SectionTitle>Journals & Newsletters</SectionTitle>
 
+        {/* Tab Buttons */}
         <div className="flex gap-4 justify-center mb-8">
           <button
             onClick={() => setActiveTab("journals")}
@@ -56,11 +60,14 @@ const Publications = () => {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {data.map((item, idx) => (
-            <PublicationCard key={idx} {...item} />
-          ))}
-        </div>
+        {/* Lazy-loaded grid */}
+        <Suspense fallback={<Loader />}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {data.map((item, idx) => (
+              <PublicationCard key={idx} {...item} />
+            ))}
+          </div>
+        </Suspense>
       </section>
 
       <Footer />

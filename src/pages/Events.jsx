@@ -1,20 +1,26 @@
 // src/pages/Events.jsx
 
+import { Suspense, lazy, useState } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
-import EventCard from "@/components/ui/EventCard";
-import { useState } from "react";
+import Loader from "@/components/Loader";
 
 import eventsHero from "/images/events-hero.jpg";
 import eventsData from "@/data/events.json";
 
+// Lazy-load EventCard 🎯
+const EventCard = lazy(() => import("@/components/ui/EventCard"));
+
 const Events = () => {
   const [activeTab, setActiveTab] = useState("All");
   const categories = ["All", ...new Set(eventsData.map((e) => e.tag))];
-  const filtered = activeTab === "All" ? eventsData : eventsData.filter(e => e.tag === activeTab);
+  const filtered =
+    activeTab === "All"
+      ? eventsData
+      : eventsData.filter((e) => e.tag === activeTab);
 
   return (
     <main className="flex flex-col min-h-screen">
@@ -48,11 +54,14 @@ const Events = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {filtered.map((item, idx) => (
-            <EventCard key={idx} {...item} />
-          ))}
-        </div>
+        {/* Lazy load Event Cards */}
+        <Suspense fallback={<Loader />}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {filtered.map((item, idx) => (
+              <EventCard key={idx} {...item} />
+            ))}
+          </div>
+        </Suspense>
       </section>
 
       <Footer />

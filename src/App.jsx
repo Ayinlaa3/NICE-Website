@@ -1,27 +1,34 @@
 // App.jsx
 
 import { Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
-import About from "./pages/About";
-import Leadership from "./pages/Leadership";
-import Publications from "./pages/Publications";
-import News from "./pages/News";
-import Events from "./pages/Events";
+import { Suspense, lazy } from "react";
+import Loader from "./components/ui/Loader";
+
+import TestLoader from "./components/ui/Loader";
+console.log("Loader component:", TestLoader);
+
+// Lazy load pages
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const About = lazy(() => import("./pages/About"));
+const Leadership = lazy(() => import("./pages/Leadership"));
+const Publications = lazy(() => import("./pages/Publications"));
+const News = lazy(() => import("./pages/News"));
+const Events = lazy(() => import("./pages/Events"));
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/leadership" element={<Leadership />} />
-      <Route path="/publications" element={<Publications />} />
-      <Route path="/news" element={<News />} />
-      <Route path="/events" element={<Events />} />
-      {/* Add more routes as needed */}
-    </Routes>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/leadership" element={<Leadership />} />
+        <Route path="/publications" element={<Publications />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/events" element={<Events />} />
+        {/* Add more routes as needed */}
+      </Routes>
+    </Suspense>
   );
 };
 
 export default App;
-
-

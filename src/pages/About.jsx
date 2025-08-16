@@ -1,5 +1,6 @@
 // src/pages/About.jsx
 
+import { Suspense, lazy } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import SectionTitle from "@/components/SectionTitle";
@@ -7,16 +8,17 @@ import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
 import Button from "@/components/ui/Button";
 import WhatWeDoCard from "@/components/WhatWeDoCard.jsx";
-import Slider from "react-slick";
+import Loader from "@/components/Loader";
 import { FaBullseye, FaEye, FaCheckCircle } from "react-icons/fa";
 
-// Import slick-carousel CSS 🎯 IMPORTANT FIX
+// Lazy load Slider 🎯
+const Slider = lazy(() => import("react-slick"));
+
+// Import slick-carousel CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 import aboutHero from "/images/about-hero.png";
-
 import membershipImg from "/images/membership.png";
 import certificationsImg from "/images/certifications.png";
 import eventsImg from "/images/events.png";
@@ -144,86 +146,53 @@ const About = () => {
         ]}
       />
 
-      <section
-        className="relative px-6 md:px-16 py-16 bg-white text-gray-700">
-        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: `url(${logoBg})`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "60%", backgroundAttachment: "fixed" }}></div>
-        <SectionTitle className="text-green-600">Building the World's Infrastructure</SectionTitle>
+      <section className="relative px-6 md:px-16 py-16 bg-white text-gray-700">
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: `url(${logoBg})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "60%",
+            backgroundAttachment: "fixed",
+          }}
+        ></div>
+        <SectionTitle className="text-green-600">
+          Building the World's Infrastructure
+        </SectionTitle>
         <h3 className="relative font-bold text-xl max-w-4xl mx-auto text-center leading-8 z-10">
-          "The Nigerian Institution of Civil Engineers (NICE) is the premier professional body dedicated to advancing the practice, education, and impact of civil engineering in Nigeria."
+          "The Nigerian Institution of Civil Engineers (NICE) is the premier
+          professional body dedicated to advancing the practice, education, and
+          impact of civil engineering in Nigeria."
         </h3>
-        <p className="relative max-w-4xl mx-auto text-justify leading-7 mt-4 z-10">
-          As the largest division of the Nigerian Society of Engineers (NSE), we uphold the highest standards of technical excellence, ethical practice, and innovation in infrastructure development. For decades, NICE has served as the voice of civil engineers across Nigeria, advocating for sustainable infrastructure, policy reforms, and professional development to
-          <p className="text-center">drive national progress.</p>
-        </p>
-      </section>
-
-      <section className="px-6 md:px-16 py-16 bg-[var(--secondary)]">
-        <SectionTitle>Brief History</SectionTitle>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
-          <div className="space-y-4 text-[17px] leading-7">
-            <p>
-              The Nigerian Society of Engineers (NSE) is the umbrella organization for the Engineering profession in Nigeria and was established on 6th February, 1958 in London and later inaugurated in Lagos on 20th August, 1960. In an effort to further enhance professionalism and interaction among its members, the Nigerian Society of Engineers (NSE) encouraged the formation of Divisions of NSE along the lines of professional discipline. One of such divisions is the Nigerian Institution of Civil Engineers (NICE) established 2001. In 1984, therefore, the Council of NSE approved the establishment of the Civil Engineering Division. The mantle of nurturing and coordinating the activities of the Division fell on Rev. Canon Engr. M. O. Akintobi FNSE, who worked very hard to scale through the initial hurdle of generating the interest of members in the Division.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img src={history1} alt="History 1" className="rounded-xl object-cover w-full h-full" />
-            <div className="space-y-4">
-              <img src={history2} alt="History 2" className="rounded-xl object-cover w-full h-40" />
-              <img src={history3} alt="History 3" className="rounded-xl object-cover w-full h-40" />
-            </div>
-          </div>
-        </div>
-        <div className="space-y-4 text-[17px] leading-7 max-w-7xl mx-auto grid md:grid-cols-1 gap-10 items-start mt-4">
-          <p>
-            At the December 2001 NSE AGM in Port Harcourt, during which the Division won for the first time, the Best Division Trophy of the NSE Group Dynamics session, the Civil Division was granted the status of an Institution by the NSE as recognized and subscribed to in its Articles and Memorandum of Association by the foursome of Engr. H.O.B. Lawal (Chairman), Engr. Dr. T. M. Olatunji (General Secretary), Engr. Chika Chukwuani (Publicity Secretary) and Engr. Dr. J. O. Akanmu (Financial Secretary/De facto Technical Secretary) acting on behalf of all Civil Engineers in Nigeria. Consequently, Engr. Segun Adedeji was elected the pioneer chairman of the Institution, 2002/2003. In 2014 and 2015 at the AGM in Abuja and Akure respectively, NICE emerged for the second and third times as the Best Division of NSE Group Dynamics Competition in its nineteen years of existence as an Institution.
-          </p>
-        </div>
-      </section>
-
-      <section className="px-6 md:px-16 py-35">
-        <SectionTitle>Awards & Recognition</SectionTitle>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-15 max-w-5xl mx-auto">
-          {[
-            "First Position in 2014 NSE Group Dynamics",
-            "First Position in 2015 NSE Group Dynamics",
-            "Second Position in 2016 NSE Group Dynamics",
-          ].map((title, idx) => (
-            <div
-              key={idx}
-              className="bg-[var(--accent)] text-center py-6 px-4 rounded-xl shadow hover:shadow-md transition"
-            >
-              <div className="text-4xl mb-4">🏆</div>
-              <h3 className="font-semibold text-lg">{title}</h3>
-            </div>
-          ))}
-        </div>
       </section>
 
       <section className="px-6 md:px-16 py-16 bg-[var(--secondary)]">
         <SectionTitle>Mission, Vision & Core Values</SectionTitle>
         <div className="max-w-5xl mx-auto">
-          {/* Ensure the Slider component is correctly rendered and has children */}
-          <Slider {...sliderSettings}>
-            {missionVisionSlides.map((slide, idx) => (
-              <div
-                key={idx}
-                className="p-4" // Added padding to separate slides visually in the carousel
-              >
-                <div className="bg-white rounded-xl shadow p-6 flex items-start gap-4 max-w-3xl mx-auto">
-                  {slide.icon}
-                  <div>
-                    <h4 className="text-[var(--primary)] font-bold text-3xl mb-1">{slide.title}</h4>
-                    <p className="text-gray-700 leading-relaxed text-2xl">{slide.description}</p>
+          <Suspense fallback={<Loader />}>
+            <Slider {...sliderSettings}>
+              {missionVisionSlides.map((slide, idx) => (
+                <div key={idx} className="p-4">
+                  <div className="bg-white rounded-xl shadow p-6 flex items-start gap-4 max-w-3xl mx-auto">
+                    {slide.icon}
+                    <div>
+                      <h4 className="text-[var(--primary)] font-bold text-3xl mb-1">
+                        {slide.title}
+                      </h4>
+                      <p className="text-gray-700 leading-relaxed text-2xl">
+                        {slide.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          </Suspense>
         </div>
       </section>
 
-
-      <section className="px-6 md:px-16 py-16  bg-white">
+      <section className="px-6 md:px-16 py-16 bg-white">
         <SectionTitle>What We Do</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {WHAT_WE_DO_CARDS.map((item, idx) => (

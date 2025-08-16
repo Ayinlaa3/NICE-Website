@@ -1,20 +1,24 @@
 // src/pages/News.jsx
 
+import { useState, Suspense } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
-import NewsCard from "@/components/ui/NewsCard";
-import { useState } from "react";
+import Loader from "@/components/ui/Loader";
 
 import newsHero from "/images/news-hero.jpg";
 import newsData from "@/data/news.json";
 
+// Lazy load NewsCard
+const NewsCard = React.lazy(() => import("@/components/ui/NewsCard"));
+
 const News = () => {
   const [activeTab, setActiveTab] = useState("All");
   const categories = ["All", ...new Set(newsData.map((n) => n.category))];
-  const filtered = activeTab === "All" ? newsData : newsData.filter(n => n.category === activeTab);
+  const filtered =
+    activeTab === "All" ? newsData : newsData.filter((n) => n.category === activeTab);
 
   return (
     <main className="flex flex-col min-h-screen">
@@ -33,6 +37,7 @@ const News = () => {
       <section className="px-6 md:px-16 py-16">
         <SectionTitle>Latest Updates</SectionTitle>
 
+        {/* Category Tabs */}
         <div className="flex gap-4 justify-center mb-8 flex-wrap">
           {categories.map((cat) => (
             <button
@@ -49,11 +54,14 @@ const News = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {filtered.map((item, idx) => (
-            <NewsCard key={idx} {...item} />
-          ))}
-        </div>
+        {/* Lazy-loaded grid */}
+        <Suspense fallback={<Loader />}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {filtered.map((item, idx) => (
+              <NewsCard key={idx} {...item} />
+            ))}
+          </div>
+        </Suspense>
       </section>
 
       <Footer />
