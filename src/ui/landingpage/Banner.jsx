@@ -1,5 +1,4 @@
 // src/ui/landingpage/Banner.jsx
-
 // src/ui/landingpage/Banner.jsx
 
 import { Certificate, Partner, Plus, Search, Secure } from "../Icons";
@@ -7,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const images = [
   "/images/slide1.png",
@@ -21,7 +22,19 @@ const images = [
   "/images/slide10.jpg",
 ];
 
+// Words to type in sequence
+const words = ["Planning", "Designing", "Constructing", "Maintaining", "Sustaining"];
+
 const Banner = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2500); // change every 2.5s
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="relative w-full h-[90vh] overflow-hidden">
       {/* Background Slider */}
@@ -48,58 +61,75 @@ const Banner = () => {
 
       {/* Centered Content Overlay */}
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 md:px-20 text-white z-20">
-        <h2 className="font-extrabold text-4xl md:text-6xl leading-snug drop-shadow-lg">
-          Sustaining the World&apos;s <br /> Infrastructure
-        </h2>
-        <p className="mt-6 text-lg md:text-2xl font-medium max-w-3xl drop-shadow-md">
-          Engineering a stronger, smarter future. The Nigerian Institution of
-          Civil Engineers empowers civil engineers with the knowledge, tools,
-          and network to build resilient communities and drive innovation.
-          Together, we shape tomorrow&apos;s infrastructure.
-        </p>
+        {/* Heading with typing effect */}
+        <motion.h2
+          key={index} // re-animates when word changes
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="font-extrabold text-4xl md:text-6xl leading-snug drop-shadow-lg"
+        >
+          {words[index]} the World&apos;s <br /> Infrastructure
+        </motion.h2>
+
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="mt-5 text-lg md:text-2xl font-medium max-w-3xl drop-shadow-md"
+        >
+          The Nigerian Institution of Civil Engineers empowers civil engineers
+          with the knowledge, tools, and network to build resilient communities
+          and drive innovation.
+        </motion.p>
 
         {/* Quick Links */}
-        <div
-          className="mt-10 text-lg md:text-xl rounded-2xl font-bold flex flex-wrap justify-center gap-4 px-6 py-4 border-2 border-green-600 bg-white/95 backdrop-blur-md shadow-lg transition"
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="mt-5 text-lg md:text-xl rounded-2xl font-bold flex flex-wrap justify-center gap-5 px-6 py-2 border border-green-600 bg-white/95 backdrop-blur-md shadow-lg transition"
           id="quickLinks"
         >
           <a
             href="#"
             className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
           >
-            <Plus className="w-5 h-5 fill-yellow-500" /> Join NICE
+            <Plus className="w-8 h-8" /> Join NICE
           </a>
           <a
             href="https://portal.nicehq.org/register"
             className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
           >
-            <Search className="w-5 h-5 !fill-red-500" /> Find A Member
+            <Search className="w-8 h-8" /> Find A Member
           </a>
           <a
             href="#"
             className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
           >
-            <Certificate className="w-5 h-5" /> Browse Courses
+            <Certificate className="w-8 h-8" /> Browse Courses
           </a>
           <a
             href="#"
             className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
           >
-            <Partner className="w-5 h-5" /> Donate Now
+            <Partner className="w-8 h-8" /> Donate Now
           </a>
           <a
             href="#"
             className="flex items-center gap-2 text-green-700 hover:text-white hover:bg-green-600 px-3 py-2 rounded-xl transition"
           >
-            <Secure className="w-5 h-5" /> Make Payment
+            <Secure className="w-8 h-8" /> Make Payment
           </a>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 };
 
 export default Banner;
+
 
 
 
