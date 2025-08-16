@@ -6,7 +6,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 import SectionTitle from "@/components/SectionTitle";
 import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
-import Loader from "@/components/Loader";
+import Loader from "@/components/ui/Loader";
 
 import eventsHero from "/images/events-hero.jpg";
 import eventsData from "@/data/events.json";

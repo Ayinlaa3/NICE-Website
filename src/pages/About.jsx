@@ -8,7 +8,7 @@ import Navbar from "@/ui/landingpage/Navbar";
 import Footer from "@/ui/landingpage/Footer";
 import Button from "@/components/ui/Button";
 import WhatWeDoCard from "@/components/WhatWeDoCard.jsx";
-import Loader from "@/components/Loader";
+import Loader from "@/components/ui/Loader";
 import { FaBullseye, FaEye, FaCheckCircle } from "react-icons/fa";
 
 // Lazy load Slider 🎯
