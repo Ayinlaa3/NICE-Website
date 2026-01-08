@@ -43,6 +43,14 @@ const JOURNALS = [
     cover: "/images/newsletter4.jpg",
     file: "/newsletters/newsletter4.pdf",
   },
+  {
+    cover: "/images/journal5.jpg",
+    file: "/journals/journal5.pdf",
+  },
+  {
+    cover: "/images/journal6.jpg",
+    file: "/journals/journal6.pdf",
+  }
 ];
 
   // Custom Next Arrow component

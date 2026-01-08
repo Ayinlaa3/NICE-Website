@@ -3,5 +3,7 @@
   { "cover": "/images/journal1.jpg", "file": "/journals/journal1.pdf" },
   { "cover": "/images/journal2.jpg", "file": "/journals/journal2.pdf" },
   { "cover": "/images/journal3.jpg", "file": "/journals/journal3.pdf" },
-  { "cover": "/images/journal4.jpg", "file": "/journals/journal4.pdf" }
+  { "cover": "/images/journal4.jpg", "file": "/journals/journal4.pdf" },
+  { "cover": "/images/journal5.jpg", "file": "/journals/journal5.pdf" },
+  { "cover": "/images/journal6.jpeg", "file": "/journals/journal6.pdf" }
 ]
