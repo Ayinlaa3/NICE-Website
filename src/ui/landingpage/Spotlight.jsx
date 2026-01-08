@@ -3,7 +3,7 @@ import SpotlightCard from "../../components/SpotlightCard";
 
 const spotlightData = [
   {
-    title: "Iconic Infrastructure of the Year",
+    title: "Iconic Infrastructure of the Year - Lagos Calabar Coastal Highway",
     category: "Spotlight",
     description:
       "Celebrating the most innovative and impactful infrastructure project that advanced engineering excellence and public good.",
