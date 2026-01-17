@@ -1,18 +1,22 @@
-
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/journals/(.*)",
-      "destination": "/journals/$1"
+      "src": "/journals/(.*\\.pdf)",
+      "dest": "/journals/$1",
+      "headers": {
+        "Content-Type": "application/pdf"
+      }
     },
     {
-      "source": "/images/(.*)",
-      "destination": "/images/$1"
+      "src": "/newsletters/(.*\\.pdf)",
+      "dest": "/newsletters/$1",
+      "headers": {
+        "Content-Type": "application/pdf"
+      }
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
-
