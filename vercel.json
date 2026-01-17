@@ -1,6 +1,10 @@
 {
   "routes": [
     {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
       "src": "/journals/(.*\\.pdf)",
       "dest": "/journals/$1",
       "headers": {
@@ -13,6 +17,14 @@
       "headers": {
         "Content-Type": "application/pdf"
       }
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/images/$1"
+    },
+    {
+      "src": "/icons/(.*)",
+      "dest": "/icons/$1"
     },
     {
       "src": "/(.*)",
